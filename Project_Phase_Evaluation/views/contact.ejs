@@ -1,0 +1,187 @@
+<%-include('include/_header')%>
+
+    
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .navbar {
+            width: 100%;
+            background-color: orange;
+            overflow: auto;
+        }
+        
+        .navbar a {
+            float: left;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            width: 33%;
+            /* Four links of equal widths */
+            text-align: center;
+        }
+        
+        .navbar a:hover {
+            background-color: green;
+        }
+        
+        .navbar a.active {
+            background-color: ;
+        }
+        
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .navbar a {
+                float: none;
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+
+
+    <div class="navbar">
+        <a class="" href="HOME.HTML">Home</a>
+        <a href="/register">Login Admin</a>
+        <a href="/login">Login Admin</a>
+        <a href="/contact">Contact us</a>
+    </div>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+        
+        html {
+            box-sizing: border-box;
+        }
+        
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+        
+        .column {
+            float: right;
+            width: 50%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+        
+        .about-section {
+            padding: 40px;
+            text-align: center;
+            background-color: rgb(18, 143, 132);
+            color: white;
+        }
+        
+        .container {
+            padding: 0 16px;
+        }
+        
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .title {
+            color: grey;
+        }
+        
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 6px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .button:hover {
+            background-color: #555;
+        }
+        
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="about-section">
+
+        <marquee>
+            <h1>Contact Us</h1>
+        </marquee>
+
+
+    </div>
+
+    <h2 style="text-align:center">Our Team</h2>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+
+                <div class="container">
+                    <h2>Doe</h2>
+                    <p class="title">CEO & Founder</p>
+                    <p>Green care private limited</br>
+                        #132,1st floor 4th phase JP Nagar</br>
+                        08055222288</br>
+                        Bangalore 560076, Karnataka</br>
+                    </p>
+                    <p>jane@gmail.com</p>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="column">
+            <div class="card">
+
+                <div class="container">
+                    <h2>John</h2>
+                    <p class="title">Manager</p>
+                    <p>Plot No. 21 B, Sripala heights</br> 6th phase</br>
+                        08044665522</br>
+                        Hyderabad 500062</br>
+                    </p>
+                    <p>john@gmail.com</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<% for(var i=0;i < users.length;i++) {%>
+<tr>
+    <td><%= i+1 %></td>
+    <td><%= users[i].ids%></td>
+    <td><%= users[i].names%></td>
+    <td><%= users[i].email%></td>
+    <td><%= users[i].dept%></td>
+    <td><%= users[i].grade%></td>
+    <td><%= users[i].grpno%></td>
+    <td><%= users[i].phase%></td>
+    <td><%= users[i].time%></td>
+    <td><%= users[i].date%></td>
+    <td><a href="<%= users[i].link%>">Meeting link</a></td>
+    <td>
+        <a href="/update_user?id=<%= users[i]._id%>" class="btn border-shadow update">
+         <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+         </a>
+    </td>
+    <td>    
+        <a  class="btn border-shadow delete" data-id=<%= users[i]._id%>>
+        <span class="text-gradient"><i class="fas fa-times"></i></span>
+        </a>
+    </td>
+     <td>  
+         <button><a href="/phase1">EVALULATE</a></button>  
+      
+    </td>
+ </tr>
+ <%}%>
