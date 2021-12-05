@@ -1,18 +1,45 @@
-<%-include('include/_header')%>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
     
-    <style>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+   <!-- // <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+<body>
+    
+    <header id="header">
+        <nav>
+            
+            <div class="container">
+                <div class="text-center" style="text-align:center; font-size:larger;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                    <a href="/" class="nav-brand text dark"><h1>PROJECT EVALUATION</h1></a>
+                    <p style="text-align: center; font-size:16px">Making evaluation easy</p>
+                </div>
+               
+            </div>
+             <style>
         * {
             box-sizing: border-box
         }
         
         body {
+            background-repeat: no-repeat;
+          
+              width: 100%;
+        height: 300%;
+            background-position:center;
+             background-size: cover;
+               background-image: url("./css/wal7.jpg"); 
             font-family: Arial, Helvetica, sans-serif;
         }
         
         .navbar {
             width: 100%;
-            background-color: orange;
+                        background-color: orange;
             overflow: auto;
         }
         
@@ -22,13 +49,13 @@
             color: white;
             text-decoration: none;
             font-size: 17px;
-            width: 33%;
+            width: 25%;
             /* Four links of equal widths */
             text-align: center;
         }
         
         .navbar a:hover {
-            background-color: green;
+            background-color:rgb(240, 153, 22);
         }
         
         .navbar a.active {
@@ -53,10 +80,10 @@
 
 
     <div class="navbar">
-        <a class="" href="HOME.HTML">Home</a>
+        <a  href="/">Home</a>
         <a href="/register">Login Admin</a>
-        <a href="/login">Login Admin</a>
-        <a href="/contact">Contact us</a>
+        <a href="/login">Login Faculty</a>
+        <a href="/contact" >Contact us</a>
     </div>
     <style>
         body {
@@ -87,10 +114,10 @@
         }
         
         .about-section {
-            padding: 40px;
+            padding: 2px;
             text-align: center;
-            background-color: rgb(18, 143, 132);
-            color: white;
+            
+            color: rgb(12, 10, 10);
         }
         
         .container {
@@ -113,7 +140,7 @@
             outline: 0;
             display: inline-block;
             padding: 6px;
-            color: white;
+           
             background-color: #000;
             text-align: center;
             cursor: pointer;
@@ -138,26 +165,26 @@
     <div class="about-section">
 
         <marquee>
-            <h1>Contact Us</h1>
+            <h1 style="font-size: 40px;">Contact Us</h1>
         </marquee>
 
 
     </div>
 
-    <h2 style="text-align:center">Our Team</h2>
+    <h2 style="text-align:center ">Our Team</h2>
     <div class="row">
         <div class="column">
             <div class="card">
 
                 <div class="container">
-                    <h2>Doe</h2>
+                    <h2>Faculty Coordinator</h2>
                     <p class="title">CEO & Founder</p>
-                    <p>Green care private limited</br>
-                        #132,1st floor 4th phase JP Nagar</br>
+                    <p>Nitte Meenakshi Institute Of Tecnology</br>
+                        
                         08055222288</br>
                         Bangalore 560076, Karnataka</br>
                     </p>
-                    <p>jane@gmail.com</p>
+                    <p>faculty.coordinator@nmit.ac.in</p>
 
                 </div>
             </div>
@@ -169,7 +196,7 @@
             <div class="card">
 
                 <div class="container">
-                    <h2>John</h2>
+                    <h2>Nitte Manager</h2>
                     <p class="title">Manager</p>
                     <p>Plot No. 21 B, Sripala heights</br> 6th phase</br>
                         08044665522</br>
@@ -185,3 +212,8 @@
 </body>
 
 </html>
+         
+
+        </nav>
+    </header>
+     

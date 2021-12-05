@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css" type="text/css" href="xyz.css" >
+</head>
+<body>
+     <script type="text/javascript">
+		$(document).ready(function(){
+
+			$( "#form1" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/faculty',
+					data: $('#form1').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form1')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+         					//ADD THIS CODE
+         					setTimeout(function(){
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="Success!") {
+         						document.getElementById("aa").click();
+         					};
+         				},
+         				error: function() {
+         				}
+         			})
+			});
+		});
+	</script> 
+</head>
+
+    <div class="container">
+                <div class="text-center">
+                    
+                    <a href="/" class="nav-brand text dark"><h1>PROJECT EVALUATION</h1></a>
+                    <p style="text-align: center; font-size:16px">Making evaluation easy</p>
+                </div>
+   
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+
+          
+        <!-- background-image: url("css/wal4.jpg"); -->
+            font-family: Arial, Helvetica, sans-serif;
+           
+            background-repeat: no-repeat;
+          
+              width: 100%;
+    height: 300%;
+            background-position:center;
+             background-size: cover;
+             
+        }
+        
+        .navbar {
+            height: 100%;
+            width: 100%;
+            background-color: orange;
+            overflow: auto;
+        }
+        
+        .navbar a {
+            float: left;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            width: 25%;
+            /* Four links of equal widths */
+            text-align: center;
+        }
+        
+        .navbar a:hover {
+            background-color: rgb(121, 83, 2);
+        }
+        
+        .navbar a.active {
+            background-color: ;
+        }
+        
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .navbar a {
+                float: none;
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+        }
+        
+.text-gradient{
+    background: linear-gradient(to right,black,orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 25px;
+    -webkit-text-fill-color: transparent;
+}
+
+    </style>
+    <h2>
+       
+    </h2>
+    <br>
+      <br>
+    <div class="navbar">
+      
+        <a class="" href="">Home</a>
+        <a href="/index">Login Admin</a>
+        <a href="/index1">Login Faculty</a>
+        <a href="/contact">Contact us</a>
+    </div>
+    <br>
+    <br>
+    <div style="font-size:larger;font-family:Arial, Helvetica, sans-serif">
+        <center>
+         <h3>Check you schedule</h3>
+         <div >
+             <br>
+            
+        <label  class="text-light">Email</label><br><br>
+          </div>   
+          <div >  
+               <form  id="form1" method="POST"></form>      
+         <input style="font-size:20px;font-family:Arial, Helvetica, sans-serif;text-align:center" type="email" name="email" value="" placeholder="Enter your email id">
+      <input type="submit" value="Register" class="btn btn-success">  
+        </center>
+    </div>
+    <div class="mssg bg-danger">
+			<span id="check"></span>
+		</div>
+		
+<div id="LangTable"><a href="/faculty2" id="aa"></a>
+		</div>
+		
+
+</body>
+</html>

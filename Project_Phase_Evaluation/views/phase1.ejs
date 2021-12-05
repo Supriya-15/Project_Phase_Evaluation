@@ -5,22 +5,206 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/Selection.css" />
+    
+    
+    <script type="text/javascript">
+      
+      var form=document.getElementById('phase1')
+      form.addEventListener('submit',function(event){
+        if(event)
+        {
+          alert("u have submitted the form")
+        }
+      })
+		$(document).ready(function(){
 
-    <link rel="stylesheet" type="text/css" href="css/Selection.css" />
+			$( "#phase1" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/phase1',
+					data: $('#phase1').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+            document.getElementById("check")
+            function myfun(){
+              alert("Success");
+            }
+         					//ADD THIS CODE
+         					setTimeout(function(){
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="Success!") {
+         						document.getElementById("aa").click();
+                     response.alert("successfully");
+         					};
+         				},
+         				error: function() {
+         				}
+         			})
+			});
+
+		});
+	</script>
   </head>
-  <body style="background-image: linear-gradient( rgb(245, 211, 100),#e97020)">
+  
+  <body  >
     <div class="wrap">
       <h1 class="likert-header" 
       style="text-align: center; background-color:rgba(185, 24, 218, 0.2); font-size:xx-large; font-family:'sans-serif ';box-shadow: 
 		0 -1px 0 rgba(1,0,0.2,1), 0 1px 0 rgba(255,255,255,0.6);;">PHASE 1</h1>
-          
+   
+        <form  method="POST" id="phase1">
+           <center>     
+    <h4>Please enter the group number you are Evaluating</h4>
+         
+         <div><label >Group Number</label>
+            
+                <input required="true" type="number" name="group" id="group">
+                 
+           </div> 
+        </center> 
+        <label for="prb_dom" class="statement" >Identification of Problem Domain</label>
+        <ul class="likert"  >
+          <li>
+            <input type="radio" required="true" name="prb_dom" value=5 />
+            <label>Excellent</label>
+            <label>(5)</label>
+          </li>
+          <li>
+            <input type="radio"  required="true" name="prb_dom" value=4 />
+            <label>Good(4)</label>
+          </li>
+          <li>
+            <input type="radio"  required="true" name="prb_dom" value=3 />
+            <label>Average(3)</label>
+          </li>
+          <li>
+            <input type="radio"  required="true" name="prb_dom" value=2 />
+            <label>Fair(2)</label>
+          </li>
+          <li>
+            <input type="radio"  required="true" name="prb_dom" value=1 />
+            <label>Poor(1)</label>
+          </li>
+        </ul>
+        <label for="lit_sur" class="statement"required="required">Literature Survey</label>
+        <ul class="likert" id="r2">
+          <li>
+            <input type="radio" required="true"name="lit_sur" value=5 />
+            <label>Excellent(5)</label>
+          </li>
+          <li>
+            <input type="radio" required="true"name="lit_sur" value=4 />
+            <label>Good(4)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="lit_sur" value=3 />
+            <label>Average(3)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="lit_sur" value=2 />
+            <label>Fair(2)</label>
+          </li>
+          <li>
+            <input type="radio" required="true"name="lit_sur" value=1 />
+            <label>Poor(1)</label>
+          </li>
+        </ul>
+        <label for="dsg_mth" class="statement"
+          >Objectives and Design Methdology/Project proposal</label
+        >
+        <ul class="likert" id="r3">
+          <li>
+            <input type="radio" name="dsg_mth" value=5 />
+            <label>Excellent(5)</label>
+          </li>
+          <li>
+            <input type="radio" required="true"name="dsg_mth" value=4 />
+            <label>Good(4)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="dsg_mth" value=3 />
+            <label>Average(3)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="dsg_mth" value=2 />
+            <label>Fair(2)</label>
+          </li>
+          <li>
+            <input type="radio" required="true"name="dsg_mth" value=1 />
+            <label>Poor(1)</label>
+          </li>
+        </ul>
+        <label for="dap" class="statement" required="">Demonstartion and Presentation</label>
+        <ul class="likert" id="r4">
+          <li>
+            <input type="radio"required="true" name="dap" value=5 />
+            <label>Excellent(5)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="dap" value=4 />
+            <label>Good(4)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="dap" value=3 />
+            <label>Average(3)</label>
+          </li>
+          <li>
+            <input type="radio" required="true"name="dap" value=2 />
+            <label>Fair(2)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="dap" value=1 />
+            <label>Poor(1)</label>
+          </li>
+        </ul>
+        <label for="q_a"class="statement" required="">Q-A</label>
+        <ul class="likert" id="r5">
+          <li>
+            <input type="radio" required="true"name="q_a" value=5 />
+            <label>Excellent(5)</label>
+          </li>
+          <li>
+            <input type="radio" required="true"name="q_a" value=4 />
+            <label>Good(4)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="q_a" value=3 />
+            <label>Average(3)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="q_a" value=2 />
+            <label>Fair(2)</label>
+          </li>
+          <li>
+            <input type="radio"required="true" name="q_a" value=1 />
+            <label>Poor(1)</label>
+          </li>
+        </ul>
+        <div class="buttons">
+          <button input="" class="clear" >Clear</button>
+          <input style="font-size: 28px;" type="Submit" class="submit" id="submit" value="Submit" >
+          <button type="mark" ><a href="/mark">Mark</a></button>
+        </div>
+      </form>
 
-        <%-include('include/_phs1')%>
-     
-       
-    </div>
+        </div>
     <script src="check.js"></script>
+    <div id="LangTable"><a href="/phase1" id="aa" onclick="myfun()"></a>
+		</div>
     
-    <button><a href="/phase2">Evaluate Phase 2</a></button>
+    <!-- <button><a href="/phase2">Evaluate Phase 2</a></button> -->
   </body>
 </html>

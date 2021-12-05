@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty</title>
+    <link rel="stylesheet" href="./css/style.css" type="text/css" href="xyz.css" >
+</head>
+<body>
+      <script type="text/javascript">
+		$(document).ready(function(){
+
+			$( "#form1" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/faculty2',
+					data: $('#form1').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form1')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+         					//ADD THIS CODE
+         					setTimeout(function(){
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="Success!") {
+         						document.getElementById("aa").click();
+         					};
+         				},
+         				error: function() {
+         				}
+         			})
+			});
+		}); 
+	</script> 
+</head>
+
+    <div class="container">
+                <div class="text-center">
+                    
+                    <a href="/" class="nav-brand text dark"><h1>PROJECT EVALUATION</h1></a>
+                    <p style="text-align: center; font-size:16px">Making evaluation easy</p>
+                </div>
+   
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+       
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+/* General Buttons */
+button {
+  width: 130px;
+  height: 40px;
+  background: linear-gradient(to bottom, #e5e24e 0%,orange 100%); /* W3C */
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  border-bottom: 4px solid #2b8bc6;
+  color: #fbfbfb;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  font-size: 15px;
+  text-align: left;
+  text-indent: 5px;
+  box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+ 
+
+/* Just for presentation */  
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+button:active {
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,.2);
+  top: 1px;
+}
+
+button:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 20px solid #187dbc;
+  border-bottom: 20px solid #187dbc;
+  border-left: 16px solid transparent;
+  border-right: 20px solid #187dbc;
+  position: absolute;
+  opacity: 0.6; 
+  right: 0;
+  top: 0;
+  border-radius: 0 5px 5px 0;  
+}
+        
+        .navbar {
+            height: 100%;
+            width: 100%;
+            background-color: orange;
+            overflow: auto;
+        }
+        
+        .navbar a {
+            float: left;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            width: 25%;
+            /* Four links of equal widths */
+            text-align: center;
+        }
+        
+        .navbar a:hover {
+            background-color: rgb(121, 83, 2);
+        }
+        
+        .navbar a.active {
+            background-color: ;
+        }
+        
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .navbar a {
+                float: none;
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+        }
+        
+.text-gradient{
+    background: linear-gradient(to right,black,orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 25px;
+    -webkit-text-fill-color: transparent;
+}
+
+
+    </style>
+    <h2>
+       
+    </h2>
+    <br>
+      <br>
+    <div class="navbar">
+      
+        <a class="" href="">Home</a>
+        
+        <a href="/index1">Login Faculty</a>
+        <a href="/contact">Contact us</a>
+        <a href="/">Exit</a>
+    </div>
+    <br>
+    <br>
+    <div style="font-size:larger;font-family:Arial, Helvetica, sans-serif">
+        <center>
+         <h3>Check you schedule</h3>
+         <div >
+             <br>
+             <form method="POST" id="form1">
+        <!-- <label for="email" class="text-light">Email</label><br><br>
+          </div>   
+          <div >        
+         <input style="font-size:20px;font-family:Arial, Helvetica, sans-serif;text-align:center"type="email" name="email" value="" placeholder="Enter your email id">
+        <input type="submit" value="Submit" class="text-gradient">  -->
+        </form>  
+        </center>
+    </div>
+    <div class="mssg bg-danger">
+			<span id="check"></span>
+		</div>
+		
+
+		<div id="LangTable"><a href="/faculty2" id="aa"></a>
+		</div>
+<table class="table" >
+         <table class="table" >
+                <thead class="thead-dark">
+                    <tr>
+                        
+                        <th>Faculty No.</th>
+                        <th>NAME</th>
+                        <th>@EMAIL</th>
+                        <th>DEPARTMENT</th>
+                        <th>GRADE</th>
+                         
+                        <th>GROUP NUMBER</th>
+                        
+                        
+                        <th>TIME </th>
+                        <th>DATE</th>
+                        <th>LINK</th>
+                        <th>Phases</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+              <tr>
+    <%addusers.forEach(data => {%>
+    <td><%= data.ids %></td>
+    <td><%= data.names %></td>
+    <td><%= data.email %></td>
+    <td><%= data.dept %></td>
+    <td><%= data.grade %></td>
+    <td><%= data.grpno %></td>
+    
+    <td><%= data.time %></td>
+    <td><%= data.date %></td> 
+    <td><a href=""><%= data.link%></a></td>
+    <td><button class="button" ><a href="/phase1">Phase1</a></button></td>
+     </tr>
+     <%})%>
+     </tbody>        
+                
+            </table>
+        
+        </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- <script type="text/javascript">
+		$(document).ready(function(){
+
+			$( "#form1" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/assign',
+					data: $('#form1').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form1')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+         					//ADD THIS CODE
+         					setTimeout(function(){
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="Success!") {
+         						document.getElementById("aa").click();
+         					};
+         				},
+         				error: function() {
+         				}
+         			})
+			});
+		});
+	</script> -->
+</head>
+<body>
+    
+    <header id="header">
+        <nav>
+            
+            <div class="container">
+                <div class="text-center">
+                    <a href="/" class="nav-brand text dark"><h1>PROJECT EVALUATION</h1></a>
+                    <p style="text-align: center; font-size:16px">Making evaluation easy</p>
+                </div>
+               
+            </div>
+         
+
+        </nav>
+    </header>
+
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="/add_user" class="border-shadow">
+                <span class="text-gradient"><i class="fas fa-users"></i>New User</span>
+                </a>
+                
+            </div>
+            <br>
+                <br>
+            <!--form handling-->
+             <!-- <form id="form"action="/" method="POST"> --> 
+            <table class="table" >
+                <thead class="thead-dark">
+                    <tr>
+                        
+                        <th>Faculty No.</th>
+                        <th>NAME</th>
+                        <th>@EMAIL</th>
+                        <th>DEPARTMENT</th>
+                        <th>GRADE</th>
+                         
+                        <th>GROUP NUMBER</th>
+                       
+                        
+                        <th>TIME </th>
+                        <th>DATE</th>
+                        <th>LINK</th>
+                        <!-- <th>UPDATE</th>
+                        <th>DELETE</th> -->
+                    
+                    </tr>
+                </thead>
+                <tbody>
+              <tr>
+    <%addusers.forEach(data => {%>
+    <td><%= data.ids %></td>
+    <td><%= data.names %></td>
+    <td><%= data.email %></td>
+    <td><%= data.dept %></td>
+    <td><%= data.grade %></td>
+    <td><%= data.grpno %></td>
+    
+    <td><%= data.time %></td>
+    <td><%= data.date %></td> 
+    <td><a href=""><%= data.link%></a></td>
+    <td>
+        <!-- <a href="/update/<%= data._id %>" class="btn border-shadow update">
+         <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+         </a> -->
+    </td>
+    <td>    
+        <!-- <a  class="btn border-shadow delete" data-id=<%= data._id%>>
+        <span class="text-gradient"><i class="fas fa-times"></i></span>
+        </a> -->
+    </td>
+ </tr>
+ <%})%>
+          </tbody>        
+                
+            </table>
+            </form>
+            
+        </div>
+    </main>
+<!--include heaad-->
+<!-- <div  class="mssg bg-danger">
+				<span id="check"></span>
+				</div>
+<div id="LangTable"><a href="/update" id="aa"></a>
+</div> -->
+<!-- <button><a href="/phase1">EVALULATE</a></button> -->
+</body>
+</html>

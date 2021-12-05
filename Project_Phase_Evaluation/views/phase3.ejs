@@ -7,8 +7,53 @@
     <title>Document</title>
 
     <link rel="stylesheet" type="text/css" href="css/Selection.css" />
-  </head>
-  <body style="background-image: linear-gradient( rgb(245, 211, 100),#e97020)" >
+  
+  <script type="text/javascript">
+      var form=document.getElementById('phase1')
+      form.addEventListener('submit',function(event){
+        if(event)
+        {
+          alert("u have submitted the form")
+        }
+      })
+		$(document).ready(function(){
+
+			$( "#phase3" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/phase3',
+					data: $('#phase3').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+            document.getElementById("check")
+            function myfun(){
+              alert("Success");
+            }
+         					//ADD THIS CODE
+         					setTimeout(function(){
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="Success!") {
+         						document.getElementById("aa").click();
+                     response.alert("successfully");
+         					};
+         				},
+         				error: function() {
+         				}
+         			})
+			});
+
+		});
+	</script>
+    </head>
+  <body  >
     <div class="wrap" >
       <h1 
         class="likert-header"
@@ -18,10 +63,147 @@
       >
         PHASE 3
       </h1>
-       <%-include('include/_phs3')%>
+       
     
        <script src="check.js"></script>
     
     <button><a href="/login">Go back</a></button>
   </body>
 </html>
+<form method="POST" id="phase3">
+    <center>     
+    <h4>Please enter the group number you are Evaluating</h4>
+         
+         <div><label required="required">Group Number</label>
+            
+                <input type="number" name="group"required="true" id="group" required="true">
+                 
+           </div> 
+        </center> 
+        <label for="cmp_prs" class="statement">Complete Presentation</label>
+        <ul class="likert">
+          <li>
+            <input type="radio" name="cmp_prs" required="true"value=10 />
+            <label>Excellent</label>
+            <label>(10)</label>
+          </li>
+          <li>
+            <input type="radio" name="cmp_prs" required="true"value=8 />
+            <label>Good(8)</label>
+          </li>
+          <li>
+            <input type="radio" name="cmp_prs" required="true"value=6 />
+            <label>Average(6)</label>
+          </li>
+          <li>
+            <input type="radio" name="cmp_prs" required="true"value=4 />
+            <label>Fair(4)</label>
+          </li>
+          <li>
+            <input type="radio" name="cmp_prs" required="true"value=2 />
+            <label>Poor(2)</label>
+          </li>
+        </ul>
+        <label for="dm_ex"class="statement">Demo and Execution</label>
+        <ul class="likert">
+          <li>
+            <input type="radio" name="dm_ex"required="true" value=10 />
+            <label>Excellent(10)</label>
+          </li>
+          <li>
+            <input type="radio" name="dm_ex"required="true" value=8 />
+            <label>Good(8)</label>
+          </li>
+          <li>
+            <input type="radio" name="dm_ex"required="true" value=6 />
+            <label>Average(6)</label>
+          </li>
+          <li>
+            <input type="radio" name="dm_ex"required="true" value=4 />
+            <label>Fair(4)</label>
+          </li>
+          <li>
+            <input type="radio" name="dm_ex" required="true"value=2 />
+            <label>Poor(2)</label>
+          </li>
+        </ul>
+        <label for="rs_ds"class="statement">Result and Discussion</label>
+        <ul class="likert">
+          <li>
+            <input type="radio" name="rs_ds" required="true"value=10 />
+            <label>Excellent(10)</label>
+          </li>
+          <li>
+            <input type="radio" name="rs_ds"required="true" value=8 />
+            <label>Good(8)</label>
+          </li>
+          <li>
+            <input type="radio" name="rs_ds"required="true" value=6 />
+            <label>Average(6)</label>
+          </li>
+          <li>
+            <input type="radio" name="rs_ds" required="true"value=4 />
+            <label>Fair(4)</label>
+          </li>
+          <li>
+            <input type="radio" name="rs_ds" required="true"value=2 />
+            <label>Poor(2)</label>
+          </li>
+        </ul>
+        <label for="prj_rp" class="statement">Project Report</label>
+        <ul class="likert">
+          <li>
+            <input type="radio" name="prj_rp"required="true" value=10 />
+            <label>Excellent(10)</label>
+          </li>
+          <li>
+            <input type="radio" name="prj_rp" required="true"value=8 />
+            <label>Good(8)</label>
+          </li>
+          <li>
+            <input type="radio" name="prj_rp"required="true" value=6 />
+            <label>Average(6)</label>
+          </li>
+          <li>
+            <input type="radio" name="prj_rp"required="true" value=4 />
+            <label>Fair(4)</label>
+          </li>
+          <li>
+            <input type="radio" name="prj_rp" value=2 />
+            <label>Poor(2)</label>
+          </li>
+        </ul>
+        <label for="dis" class="statement">Discussion</label>
+        <ul class="likert">
+          <li>
+            <input type="radio" name="dis"required="true" value=10 />
+            <label>Excellent(10)</label>
+          </li>
+          <li>
+            <input type="radio" name="dis"required="true" value=8 />
+            <label>Good(8)</label>
+          </li>
+          <li>
+            <input type="radio" name="dis"required="true" value=6 />
+            <label>Average(6)</label>
+          </li>
+          <li>
+            <input type="radio" name="dis"required="true" value=4 />
+            <label>Fair(4)</label>
+          </li>
+          <li>
+            <input type="radio" name="dis"required="true" value=2 />
+            <label>Poor(2)</label>
+          </li>
+        </ul>
+        <div class="buttons">
+          <button class="clear">Clear</button>
+         <input style="font-size: 28px;" type="Submit" class="submit" id="submit" value="Submit" >
+          <button type="mark" ><a href="/mark3">Mark</a></button>
+        </div>
+      </form>
+
+       </div>
+    <script src="check.js"></script>
+    <div id="LangTable"><a href="/phase3" id="aa" onclick="myfun()"></a>
+		</div>

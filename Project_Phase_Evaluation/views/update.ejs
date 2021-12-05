@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script type="text/javascript">
+		$(document).ready(function(){
+
+			$( "#form" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/update/id',
+					data: $('#form').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+         					//ADD THIS CODE
+         					setTimeout(function(){
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="Success!") {
+         						document.getElementById("aa").click();
+         					};
+         				},
+         				error: function() {
+         				}
+         			})
+			});
+
+		});
+	</script>
+</head>
+
+
+<body>
+    
+    <header id="header">
+        <nav>
+            
+            <div class="container">
+                <div class="text-center">
+                    <a href="/" class="nav-brand text dark"><h1>PROJECT EVALUATION</h1></a>
+                    <p style="text-align: center; font-size:16px">Making evaluation easy</p>
+                </div>
+               
+            </div>
+         
+
+        </nav>
+    </header>
+
+
+<main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <div class="filter">
+                    <a href="/"><i class="fas fa-angle-double-left"></i>All user</a>
+                </div>
+            </div>
+            
+            <div class="form-title text-center">
+                <h2 class="text-dark">Update user</h2>
+                <span class="text-light">Please make the neccessary update </span>
+            </div>
+
+            
+            <!--form handling-->
+ <form action ="/update/<%= id %>" method="POST" id="update_user">
+                <div class="new_user">
+                    <div class="form-group">
+                        <label for="ids" class="text-light">ID</label>
+                        <input type="hidden" name="id" value="<%= user._id %>">
+                        <input type="number" name="ids" value="<%= ids %>" placeholder="your id">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="names" class="text-light">Name</label>
+                        
+                        <input type="text" name="names" value="<%= names %>" placeholder="your name">
+
+                    </div>
+                     <div class="form-group">
+                        <label for="email" class="text-light">Email</label>
+                        
+                        <input type="email" name="email" value="<%= email %>" placeholder="your email">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="dept" class="text-light">Department</label>
+                       
+                        <input type="text" name="dept" value="<%= dept %>" placeholder="your department">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="grade" class="text-light">Grade</label>
+                       
+                        <input type="text" name="grade" value="<%= grade %>" placeholder="proffestional grade">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="grpno" class="text-light">Group number</label>
+                       
+                        <input type="number" name="grpno" value="<%= grpno %>" placeholder="group number">
+                        
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="phase" class="text-light">Phase</label>
+                       <div class="radio inline">
+                            <input type="radio" id="phase-1" name="phase" value="Phase 1"<%= user.phase == 'Phase 1'?'checked': ''%>>
+                            <label for="phase-1" class="radio-label">Phase 1</label>
+                        </div>
+                          <div class="radio inline">
+                              <input type="radio" id="phase-2" name="phase" value="Phase 2"<%= user.phase == 'Phase 2'?'checked': ''%>>
+                                <label for="phase-2" class="radio-label">Phase 2</label>
+                          </div>
+                          <div class="radio inline">
+                                <input type="radio" id="phase-3" name="phase" value="Phase 3"<%= user.phase == 'Phase 3'?'checked': ''%>>
+                                 <label for="phase-3" class="radio-label">Phase 3</label>
+                           </div> 
+                        </div>-->
+                    
+                    <div class="form-group">
+                        <label for="time" class="text-light">TIME</label>
+                       
+                        <input type="time" name="time" value="<%= time %>" placeholder="group number">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="date" class="text-light">Date</label>
+                       
+                        <input type="date" name="date" value="<%= date %>" placeholder="group number">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="link" class="text-light">Link</label>
+                       
+                        <input type="link" name="link" value="<%= link %>" placeholder="Link">
+                        
+                    </div>
+                     <div class="form-group">
+                      <button type="submit" name="submit"class="btn text-dark update">Save</button>
+                        
+                    </div>
+                     
+
+                </div>
+            
+            </form>
+
+         
+
+        </div>
+    </main>

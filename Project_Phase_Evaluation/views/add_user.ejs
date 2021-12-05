@@ -1,11 +1,68 @@
-<!--include heaad-->
-<%-include('include/_header')%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript">
+		$(document).ready(function(){
 
- <main id="site-main">
+			$( "#form1" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/add_user',
+					data: $('#form1').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form1')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+         					//ADD THIS CODE
+         					setTimeout(function(){
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="You have added the user successfully") {
+         						document.getElementById("aa").click();
+         					};
+         				},
+         				error: function() {
+         				}
+         			})
+			});
+		});
+	</script>
+
+
+</head>
+<body>
+    
+    <header id="header">
+        <nav>
+            
+            <div class="container">
+                <div class="text-center">
+                    <a href="/" class="nav-brand text dark"><h1>PROJECT EVALUATION</h1></a>
+                    <p style="text-align: center; font-size:16px">Making evaluation easy</p>
+                </div>
+               
+            </div>
+         
+
+        </nav>
+    </header>
+
+    <main id="site-main">
         <div class="container">
             <div class="box-nav d-flex justify-between">
                 <div class="filter">
-                    <a href="/login"><i class="fas fa-angle-double-left"></i>All user</a>
+                    <a href="/assign"><i class="fas fa-angle-double-left"></i>All user</a>
                 </div>
             </div>
             
@@ -13,17 +70,90 @@
                 <h2 class="text-dark">New Class</h2>
                 <span class="text-light">Use the below form to add new assignments </span>
             </div>
-            <!--form handling-->
-           
-<%-include('include/_form')%>
 
+     <form  method="POST" id="form1">
+                <div class="new_user">
+                    <div class="form-group">
+                         
+                        <label for="ids" class="text-light">ID</label>
+                        <input type="hidden" name="id" value="">
+                        <input type="number" name="ids" value="" placeholder="Faculty id">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="names" class="text-light">Name</label>
+                        
+                        <input type="text" name="names" value="" placeholder="Faculty name">
 
+                    </div>
+                     <div class="form-group">
+                        <label for="email" class="text-light">Email</label>
+                        
+                        <input type="email" name="email" value="" placeholder="Faculty email">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="dept" class="text-light">Department</label>
+                       
+                        <input type="text" name="dept" value="" placeholder="Faculty department">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="grade" class="text-light">Grade</label>
+                       
+                        <input type="text" name="grade" value="" placeholder="professional grade">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="grpno" class="text-light">Group number</label>
+                       
+                        <input type="number" name="grpno" value="" placeholder="group number">
+                        
+                    </div>
 
+                    <!-- <div class="form-group">
+                        <label for="phase" class="text-light">Phase</label>
+                       <div class="radio inline">
+                            <input type="radio" id="phase-1" name="phase" value="Phase 1">
+                            <label for="phase-1" class="radio-label">Phase 1</label>
+                        </div>
+                          <div class="radio inline">
+                              <input type="radio" id="phase-2" name="phase" value="Phase 2">
+                                <label for="phase-2" class="radio-label">Phase 2</label>
+                          </div>
+                          <div class="radio inline">
+                                <input type="radio" id="phase-3" name="phase" value="Phase 3">
+                                 <label for="phase-3" class="radio-label">Phase 3</label>
+                           </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="time" class="text-light">TIME</label>
+                       
+                        <input type="time" name="time" value="" placeholder="Time">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="date" class="text-light">Date</label>
+                       
+                        <input type="date" name="date" value="" placeholder="Data">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="link" class="text-light">Link</label>
+                       
+                        <input type="link" name="link" value="" placeholder="Link">
+                        
+                    </div>
+                     <div class="form-group">
+                      <input style="font-size:20px"type="submit" class="btn text-dark update" type="Submit">
+                        
+                    </div>
+                      <div id="LangTable"><a href="/add_user" id="aa"></a>
 
-        </div>
-    </main>
-
-
-
-<!--include heaad-->
-<%-include('include/_footer')%>
+                </div>
+            
+            </form> 
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            </body>
+</html>
